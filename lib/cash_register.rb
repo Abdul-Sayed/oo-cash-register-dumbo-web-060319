@@ -5,10 +5,10 @@ class CashRegister
     @discount = discount
     @total = 0
   end
-  
-    ITEMS = []
-  
-  def add_item(title, price, quantity=0)
+
+  ITEMS = []
+
+  def add_item(title, price, quantity = 0)
     ITEMS << title
     if quantity > 1
       @total += (price * quantity)
@@ -16,7 +16,7 @@ class CashRegister
       @total += price
     end
   end
-  
+
   def apply_discount
     if (self.discount == 0)
       "There is no discount to apply."
@@ -25,9 +25,8 @@ class CashRegister
       "After the discount, the total comes to $#{self.total}."
     end
   end
-  
+
   def items
     ITEMS
   end
-
 end

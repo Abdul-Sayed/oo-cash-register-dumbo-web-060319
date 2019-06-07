@@ -5,15 +5,18 @@ class CashRegister
     @discount = discount
     @total = 0
   end
-  
-  def add_item(title, price, quantity=0)
+
+  @items = []
+
+  def add_item(title, price, quantity = 0)
+    @items << title
     if quantity > 1
       @total += (price * quantity)
     else
       @total += price
     end
   end
-  
+
   def apply_discount
     if (self.discount == 0)
       "There is no discount to apply."
@@ -23,4 +26,7 @@ class CashRegister
     end
   end
 
+  def items
+    @items
+  end
 end

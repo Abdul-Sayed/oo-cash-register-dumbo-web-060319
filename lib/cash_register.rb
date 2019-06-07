@@ -1,3 +1,5 @@
+require "pry"
+
 class CashRegister
   attr_accessor :discount, :total, :last_amount
 
@@ -13,11 +15,14 @@ class CashRegister
   end
 
   def add_item(title, price, quantity = 0)
-    ITEMS << title
     if quantity > 1
+      quantity.times do
+        ITEMS << title
+      end
       @total += (price * quantity)
       @last_amount = (price * quantity)
     else
+      ITEMS << title
       @total += price
       @last_amount = price
     end
@@ -40,3 +45,17 @@ class CashRegister
     self.total - @last_amount
   end
 end
+
+cash_app = CashRegister.new(20)
+
+cash_app.add_item("macbook air", 1000)
+cash_app.add_item("eggs", 1.99)
+cash_app.add_item("tomato", 1.76, 3)
+
+puts cash_app.total
+
+puts cash_app.apply_discount
+
+p cash_app.items
+
+p cash_app.last_amount

@@ -1,5 +1,3 @@
-require "pry"
-
 class CashRegister
   attr_accessor :discount, :total, :last_amount
 
@@ -42,20 +40,7 @@ class CashRegister
   end
 
   def void_last_transaction
-    self.total - @last_amount
+    puts self.total - @last_amount
+    self.total = self.total - @last_amount
   end
 end
-
-cash_app = CashRegister.new(20)
-
-cash_app.add_item("macbook air", 1000)
-cash_app.add_item("eggs", 1.99)
-cash_app.add_item("tomato", 1.76, 3)
-
-puts cash_app.total
-
-puts cash_app.apply_discount
-
-p cash_app.items
-
-p cash_app.last_amount
